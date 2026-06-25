@@ -1,0 +1,11 @@
+{
+  "name": "soda-playground",
+  "version": "1.0.0",
+  "description": "Interactive web applet to simulate and evaluate neural replay with SODA.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "serve": "python3 -m http.server 8000"
+  },
+  "license": "MIT"
+}

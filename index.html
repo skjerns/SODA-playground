@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SODA Replay Playground</title>
+  <meta name="description" content="Interactive simulation and evaluation of neural replay with Slope Order Dynamic Analysis (SODA)." />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- vendored libraries: load as plain scripts so they set globals before modules run -->
+  <script src="vendor/ml-matrix.umd.js"></script>
+  <script src="vendor/plotly.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <header class="app-header">
+    <h1>SODA Replay Playground</h1>
+    <p class="subtitle">
+      Simulate decoded reactivation and evaluate it with
+      <strong>Slope Order Dynamic Analysis</strong> (SODA;
+      <a href="https://www.nature.com/articles/s41467-021-21970-2" target="_blank" rel="noopener">Wittkuhn &amp; Schuck, 2021</a>).
+      Everything runs in your browser.
+      <a href="../TDLM-playground/">→ TDLM version</a>
+    </p>
+  </header>
+
+  <main class="app-main">
+    <aside id="controls" class="sidebar" aria-label="parameters"></aside>
+
+    <div class="plots">
+      <div class="plot-card"><div id="plot-probas" class="plot"></div></div>
+      <div class="plot-card"><div id="plot-seq" class="plot"></div></div>
+      <div id="status" class="status">initialising…</div>
+      <details class="explainer">
+        <summary>What am I looking at?</summary>
+        <p>
+          The <strong>left panel</strong> shows the simulated classifier
+          probabilities — one trace per state. A replay <em>event</em> is a
+          sequence of broad, overlapping "reactivation" bumps, each lagged by the
+          chosen time from the previous state (dotted lines mark event onsets).
+          SODA was built for slow, overlapping responses (e.g. fMRI), so the bumps
+          are wide by default.
+        </p>
+        <p>
+          The <strong>right panel</strong> shows the SODA slope dynamic. At every
+          time point the state probabilities are regressed onto each state's
+          <em>position</em> in the target sequence, giving one slope per time
+          point (conventionally inverted ×−1). Averaged around event onset, a
+          genuine overlapping sequence produces a <strong>biphasic</strong> curve:
+          an <em>onset</em> period followed by an <em>offset</em> period. The grey
+          band is a sequence-shuffle permutation null; the blue band is ±SE across
+          events.
+        </p>
+        <p>
+          Try the <strong>presets</strong> (Fig. 6 right of Kern et al.): full
+          overlap, only first &amp; last item, single first/last item, scrambled
+          order, and the little-overlap case where single-item onset/offset
+          superpositions dominate.
+        </p>
+      </details>
+    </div>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
