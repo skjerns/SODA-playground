@@ -1,5 +1,7 @@
 # SODA Replay Playground
 
+**▶ Live app: https://skjerns.github.io/SODA-playground/**
+
 An interactive, browser-only applet to **simulate** simple neural replay and
 **evaluate** it with **Slope Order Dynamic Analysis (SODA)** — the fMRI replay
 detection method of [Wittkuhn & Schuck (2021)](https://www.nature.com/articles/s41467-021-21970-2),
